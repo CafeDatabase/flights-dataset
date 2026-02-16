@@ -45,12 +45,22 @@ create or replace procedure load_flights is
                num_co number;
                num_ti number;
                num_ca number;
+               v_capacity number;
            
            begin
                num_ae :=t_airport.count;
                num_co :=t_airline.count;
                num_ti :=t_flight_type.count;
                num_ca :=t_catering.count;
+               
+               -- Random capacity (50, 60, 100, 120)
+               -- We use mod 4 to pick one
+               case trunc(dbms_random.value(0,4))
+                 when 0 then v_capacity := 50;
+                 when 1 then v_capacity := 60;
+                 when 2 then v_capacity := 100;
+                 else v_capacity := 120;
+               end case;
                      
                insert into FLIGHTS( ID_FLIGHT,
                                FLIGHT_DATE,
@@ -59,7 +69,8 @@ create or replace procedure load_flights is
                                AIRP_ID_AIRPORT_DEST,
                                AIRL_ID_AIRLINE,
                                FT_ID_FLIGHT_TYPE,
-                               CAT_ID_CATERING)
+                               CAT_ID_CATERING,
+                               AIRCRAFT_CAPACITY)
               
                values (
                   contador_vuelos,
@@ -69,11 +80,12 @@ create or replace procedure load_flights is
                   t_airport    ((dbms_random.value)*num_ae).ID_AIRPORT,
                   t_airline    ((dbms_random.value)*num_co).ID_AIRLINE,
                   t_flight_type((dbms_random.value)*num_ti).ID_FLIGHT_TYPE,
-                  t_catering   ((dbms_random.value)*num_ca).ID_CATERING
+                  t_catering   ((dbms_random.value)*num_ca).ID_CATERING,
+                  v_capacity
                   );
       
                   contador_plazas:=0;
-                  for y in 1..50
+                  for y in 1..v_capacity
                   loop
 --                  dbms_output.put_line ('vuelo '||x);  -- disabled
                          contador_plazas:=contador_plazas+1;
