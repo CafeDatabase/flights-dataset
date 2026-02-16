@@ -1,43 +1,43 @@
-# VUELOS–RESERVAS dataset (Café Database)
-
-Este repositorio contiene el **modelo VUELOS–RESERVAS** usado como base de ejemplos para *Optimización SQL en Oracle*.
-
-## Dos vías
-
-### 1) Dataset canónico (reproducir libro/clases)
-
-- **Objetivo:** reproducibilidad (mismos resultados que el libro/clases).
-- **Estado:** el artefacto canónico (p. ej. `expdp/impdp`) se añadirá cuando se publique como export Data Pump.
-
-### 2) Dataset exploratorio (aleatorio)
-
-- **Objetivo:** variabilidad realista. La carga admite rechazos silenciosos por diseño para mantener un escenario impredecible.
-- **Uso:** ideal para experimentar y encontrar (o no) patrones emergentes, como en entornos reales.
-
-## Instalación (exploratorio)
-
-1. Crear usuario (ejemplo):
-
-```sql
-create user vuelos identified by vuelos default tablespace users quota unlimited on users;
-grant connect, resource to vuelos;
-```
-
-2. Ejecutar el instalador (SQL*Plus / SQLcl):
-
-```sql
-@sql/install.sql
-```
-
-El script ejecuta:
-- creación de objetos (`02_create_objects.sql`)
-- carga aleatoria (`03_load_random.sql`)
-- validación mínima (`04_validate.sql`)
-
-## Validación
-
-El validador produce **OK / WARN / FAIL**.
-- **FAIL:** rehacer carga.
-- **WARN:** dataset utilizable, pero puede limitar algunos ejemplos (volumen/distribución).
-
-Umbral acordado: `VUELOS >= 30.000`.
+# FLIGHTS-BOOKINGS dataset (Cafe Database)
+ 
+ This repository contains the **FLIGHTS-BOOKINGS model** used as a base for examples for *SQL Optimization in Oracle*.
+ 
+ ## Two ways
+ 
+ ### 1) Canonical Dataset (book/class reproduction)
+ 
+ - **Goal:** reproducibility (same results as the book/classes).
+ - **Status:** the canonical artifact (e.g. `expdp/impdp`) will be added when published as a Data Pump export.
+ 
+ ### 2) Exploratory Dataset (random)
+ 
+ - **Goal:** realistic variability. The load allows silent rejects by design to keep an unpredictable scenario.
+ - **Usage:** ideal for experimenting and finding (or not) emerging patterns, like in real environments.
+ 
+ ## Installation (exploratory)
+ 
+ 1. Create user (example):
+ 
+ ```sql
+ create user flights identified by flights default tablespace users quota unlimited on users;
+ grant connect, resource to flights;
+ ```
+ 
+ 2. Run the installer (SQL*Plus / SQLcl):
+ 
+ ```sql
+ @sql/install.sql
+ ```
+ 
+ The script executes:
+ - Object creation (`02_create_objects.sql`)
+ - Random load (`03_load_random.sql`)
+ - Minimal validation (`04_validate.sql`)
+ 
+ ## Validation
+ 
+ The validator produces **OK / WARN / FAIL**.
+ - **FAIL:** redo load.
+ - **WARN:** dataset usable, but may limit some examples (volume/distribution).
+ 
+ Agreed threshold: `FLIGHTS >= 30,000`.

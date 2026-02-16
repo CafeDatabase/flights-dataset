@@ -1,13 +1,13 @@
--- Creates all schema objects for VUELOS-RESERVAS dataset
--- Run as schema owner (e.g., VUELOS)
-set echo on
-set define off
-set feedback on
-spool 02_create_objects.lst
-
-@@objects/vuelos.tab
-@@objects/vuelos.ind
-@@objects/vuelos.con
-@@objects/vuelos.sqs
-
-spool off
+-- Creates all schema objects for FLIGHTS-BOOKINGS dataset
+ -- Run as schema owner
+ set echo on
+ set define off
+ set feedback on
+ spool 02_create_objects.lst
+ 
+ @@objects/flights.tab
+ @@objects/flights.ind
+ @@objects/flights.con
+ @@objects/flights.sqs
+ 
+ spool off

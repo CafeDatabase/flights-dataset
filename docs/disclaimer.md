@@ -1,7 +1,7 @@
-## Disclaimer: dataset canónico vs exploratorio
-
-- Para reproducir exactamente el libro/clases: usa el **dataset canónico** (cuando esté disponible como export Data Pump).
-- Para exploración y variabilidad realista: usa el **generador aleatorio** (`install_random.sql`).
-
-En modo exploratorio, parte de la variabilidad proviene de inserciones descartadas durante la carga al no cumplir restricciones.
-Esto es intencionado para favorecer un entorno impredecible.
+## Disclaimer: Canonical vs Exploratory dataset
+ 
+ - To reproduce exactly the book/classes: use the **canonical dataset** (when available as Data Pump export).
+ - For exploration and realistic variability: use the **random generator** (`install.sql` / `03_load_random.sql`).
+ 
+ In exploratory mode, part of the variability comes from insertions discarded during load due to constraint violations.
+ This is intentional to favor an unpredictable environment.
