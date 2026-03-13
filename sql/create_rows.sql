@@ -172,7 +172,7 @@ insert into AIRPORTS(ID_AIRPORT, CN_AIRPORT, CITY_ID_CITY) values ('VCE','Venice
 PROMPT Values for table AGENCIES (GENERATED)
 PROMPT *********************************
 
-insert into AGENCIES (ID_AGENCY, CN_AGENCY, CITY_ID_CITY, TAG_ID_TRAVEL_AGENCY)
+insert  /*+NOPARALLEL */ into AGENCIES (ID_AGENCY, CN_AGENCY, CITY_ID_CITY, TAG_ID_TRAVEL_AGENCY)
 select
   AGENCY_SEQ.nextval,
   -- Neutral and consistent name: <Company>-<City>

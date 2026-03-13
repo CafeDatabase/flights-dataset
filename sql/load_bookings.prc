@@ -2,6 +2,7 @@ create or replace procedure load_bookings is
  
       contador_reservas number;
       reserva number;
+      total_vuelos number;
       
       type tipo_bt      is table of BOOKING_TYPES%rowtype ;
       type tipo_agency  is table of AGENCIES%rowtype ;
@@ -17,7 +18,8 @@ create or replace procedure load_bookings is
                 
  begin
 --      dbms_output.enable(100000);  -- disabled
-      
+      select count(*) into total_vuelos from vuelos;
+
       select * 
       bulk collect into t_bt
       from BOOKING_TYPES;
@@ -40,8 +42,8 @@ create or replace procedure load_bookings is
             loop        
                     declare
                                v_reserva varchar2(10):='';
-                               v_seat    number:=((dbms_random.value)*50)+1;
-                               v_flight  number:=((dbms_random.value)*100000)+1;
+                               v_seat    number:=((dbms_random.value)*120)+1;
+                               v_flight  number:=((dbms_random.value)*total_vuelos)+1;
                     begin
        
                                for x in 1..10 
