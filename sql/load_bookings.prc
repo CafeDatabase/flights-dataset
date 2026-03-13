@@ -18,7 +18,7 @@ create or replace procedure load_bookings is
                 
  begin
 --      dbms_output.enable(100000);  -- disabled
-      select count(*) into total_vuelos from vuelos;
+      select count(*) into total_vuelos from flights;
 
       select * 
       bulk collect into t_bt
